@@ -160,6 +160,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\IntroM - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Laboratory - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\music16c.pubxml" />
     <None Include="Properties\PublishProfiles\Music2000 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -223,6 +225,9 @@
     <EmbeddedResource Include="Migrations\201603031845212_TitleRequired.resx">
       <DependentUpon>201603031845212_TitleRequired.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
