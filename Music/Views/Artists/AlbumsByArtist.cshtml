@@ -1,10 +1,10 @@
-﻿@model Music.Models.Genre
+﻿@model Music.Models.Artist
 
 @{
-    ViewBag.Title = "Browse";
+    ViewBag.Title = "AlbumsByArtist";
 }
 
-<h2>Browsing Genre:@Model.Name</h2>
+<h2>Albums by @Model.Name</h2>
 
 <div>
     <h4>Title</h4>
@@ -21,7 +21,6 @@
     </dl>
 </div>
 <p>
-    
-    @Html.ActionLink("Back to Genres", "Index")
+   
+    @Html.ActionLink("Back to List", "Index")
 </p>
-

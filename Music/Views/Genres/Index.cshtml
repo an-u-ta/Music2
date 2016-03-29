@@ -21,12 +21,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                
+                   <a href="/Genres/Browse?item=@item.Name">@item.Name</a>
            </tr>
 
-            //@Html.ActionLink(item.Name, "Browse", "Store", new { Item = item.Name })
+           
         }
     </ul>
     

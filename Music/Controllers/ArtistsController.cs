@@ -35,6 +35,14 @@ namespace Music.Controllers
             return View(artist);
         }
 
+        public ActionResult AlbumsByArtist(string artist)
+        {
+            var artistModel = new Artist { Name = artist };
+            return View(artistModel);
+        }
+
+
+
         // GET: Artists/Create
         public ActionResult Create()
         {

@@ -20,7 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            <a href="/Artists/AlbumsByArtist?item=@item.Name">@item.Name</a>
         </td>
        
     </tr>

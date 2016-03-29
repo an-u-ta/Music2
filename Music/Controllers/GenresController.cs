@@ -115,6 +115,18 @@ namespace Music.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: Genres/Browse
+        public ActionResult Browse(string genre)
+        {
+            var genreModel = new Genre { Name = genre };
+            //var albums = db.Genres;
+                //  .Include(a => a.Artist)
+               // .Include(a => a.Genre);
+             //   .Where(a => a.GenreID == id);
+            return View(genreModel);
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

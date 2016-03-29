@@ -212,6 +212,7 @@
     <Content Include="Views\Genres\Edit.cshtml" />
     <Content Include="Views\Genres\Index.cshtml" />
     <Content Include="Views\Genres\Browse.cshtml" />
+    <Content Include="Views\Artists\AlbumsByArtist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
