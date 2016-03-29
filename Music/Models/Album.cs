@@ -8,13 +8,12 @@ namespace Music.Models
 {
     public class Album
     {
-
         public int AlbumID { get; set; }
-        [Required(ErrorMessage ="Album title is required")]
+        [Required(ErrorMessage = "Album title is required")]
         public string Title { get; set; }
-        [Display(Name ="Genre")]
+        //[Display(Name = "Genre")]
         public int GenreID { get; set; }
-        [Required, StringLength(20)]
+        //[Required, StringLength(20)]
         public Genre Genre { get; set; }
         [Range(0.01, 100.0)]
         [Required(ErrorMessage = "Price must be between 0.01 and 100")]
@@ -22,6 +21,7 @@ namespace Music.Models
         [Display(Name = "Artist")]
         public int ArtistID { get; set; }
         public Artist Artist { get; set; }
+
 
     }
 }

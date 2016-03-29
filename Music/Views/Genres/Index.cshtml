@@ -16,14 +16,18 @@
         </th>
         <th></th>
     </tr>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                
+           </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-       
-    </tr>
-}
-
+            //@Html.ActionLink(item.Name, "Browse", "Store", new { Item = item.Name })
+        }
+    </ul>
+    
 </table>

@@ -40,9 +40,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.AlbumID }) |
+        <td class="btn btn-warning btn-sm">
+            @Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }) 
+            </td>
+        <td class="btn btn-success btn-sm">
+            @Html.ActionLink("Details", "Details", new { id = item.AlbumID }) 
+            </td>
+        <td class="btn btn-danger btn-sm">
             @Html.ActionLink("Delete", "Delete", new { id = item.AlbumID })
         </td>
 
