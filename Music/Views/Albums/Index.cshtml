@@ -4,53 +4,82 @@
     ViewBag.Title = "Index";
 }
 
+
+
 <h2>Albums</h2>
 
-<p class="btn btn-warning btn-lg">
+<p class="btn btn-warning btn-sm">
     @Html.ActionLink("Add Album", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Artist)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Artist.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td class="btn btn-warning btn-sm">
-            @Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }) 
-            </td>
-        <td class="btn btn-success btn-sm">
-            @Html.ActionLink("Details", "Details", new { id = item.AlbumID }) 
-            </td>
-        <td class="btn btn-danger btn-sm">
-            @Html.ActionLink("Delete", "Delete", new { id = item.AlbumID })
-        </td>
+    <form action="demo_form.asp">
+    <input type="button" value="Search" onclick="msg()"><input type="search">
 
-    </tr>
-}
+</form>
+
+
+    <table class="table">
+  
+
+        <tr style="background-color: lightblue";  >
+            <th>
+               @Html.DisplayNameFor(model => model.Artist)
+             </th>
+            <th>
+               @Html.DisplayNameFor(model => model.Genre)
+              </th>
+            <th>
+               @Html.DisplayNameFor(model => model.Title)
+               </th>
+            <th>
+               @Html.DisplayNameFor(model => model.Price)
+               
+</th>
+            <th>
+                 <p>Likes</p>
+             </th>
+            <th></th>
+
+        </tr >
+
+        @foreach (var item in Model)
+        {
+           
+            <tr style="background-color: lightgrey";>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artist.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <button type="button" onclick="clickCounter()" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                     </button>
+                  
+                </td>
+                <td class="btn btn-default btn-sm">
+                    @Html.ActionLink(" ", "Playlist", new { id = item.AlbumID }, new { @class = " glyphicon glyphicon-list" })
+                </td>
+                <td class="btn btn-warning btn-sm">
+                    @Html.ActionLink(" ", "Edit", new { id = item.AlbumID }, new { @class = " glyphicon glyphicon-edit" })
+                </td>
+                <td class="btn btn-success btn-sm">
+                    @Html.ActionLink(" ", "Details", new { id = item.AlbumID }, new { @class = " glyphicon glyphicon-info-sign " })
+                </td>
+                <td class="btn btn-danger btn-sm">
+                    @Html.ActionLink(" ", "Delete", new { id = item.AlbumID }, new { @class = "glyphicon glyphicon-trash" })
+                </td>
+
+            </tr>
+        }
 
 </table>
+

@@ -7,21 +7,25 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Music.Models;
+using System.Web.Helpers;
 
 namespace Music.Controllers
 {
     public class AlbumsController : Controller
     {
         private MusicContext db = new MusicContext();
-
+        
         // GET: Albums
         public ActionResult Index()
         {
+           
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
+            WebGrid grid = new WebGrid(albums, rowsPerPage: 10);
+
             return View(albums.ToList());
         }
-
-        public ActionResult ShowSomeAlbums(int id)
+        [HttpPost]
+        public ActionResult Playlist(int id)
         {
             var albums = db.Albums
                 .Include(a => a.Artist)

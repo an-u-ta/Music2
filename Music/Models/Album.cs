@@ -4,10 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
+
 namespace Music.Models
 {
     public class Album
     {
+        
         public int AlbumID { get; set; }
         [Required(ErrorMessage = "Album title is required")]
         public string Title { get; set; }
@@ -21,7 +23,8 @@ namespace Music.Models
         [Display(Name = "Artist")]
         public int ArtistID { get; set; }
         public Artist Artist { get; set; }
-
-
+        public int Likes { get; set; }
+       
     }
+    
 }
