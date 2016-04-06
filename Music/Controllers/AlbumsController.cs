@@ -16,22 +16,36 @@ namespace Music.Controllers
         private MusicContext db = new MusicContext();
         
         // GET: Albums
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-           
+
+            var GenreList = new List<string>();
+            var GenreQry = from d in db.Albums orderby d.Genre select d.Genre;
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
             WebGrid grid = new WebGrid(albums, rowsPerPage: 10);
 
+            //GenreList.AddRange(GenreQry.Distinct());
+            ViewBag.movieGenre = new SelectList(GenreList);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                albums = albums.Where(a => a.Title.Contains(searchString));
+            }
+           
             return View(albums.ToList());
         }
         [HttpPost]
-        public ActionResult Playlist(int id)
+        public ActionResult Playlist([Bind(Include = "AlbumID,Title,GenreID,Price,ArtistID")] Album album)
         {
-            var albums = db.Albums
-                .Include(a => a.Artist)
-                .Include(a => a.Genre)
-                .Where(a => a.GenreID == id);
-            return View(albums.ToList());
+            if (ModelState.IsValid)
+            {
+                db.Entry(album).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.ArtistID = new SelectList(db.Artists, "ArtistID", "Name", album.ArtistID);
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "Name", album.GenreID);
+            return View(album);
         }
 
         // GET: Albums/Details/5

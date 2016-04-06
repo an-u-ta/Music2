@@ -10,10 +10,17 @@
 
 <p class="btn btn-warning btn-sm">
     @Html.ActionLink("Add Album", "Create")
-</p>
 
-    <form action="demo_form.asp">
-    <input type="button" value="Search" onclick="msg()"><input type="search">
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            <input type="submit" value="Search Titles" /> @Html.TextBox("SearchString") <br />
+            
+        </p>
+    }
+</p>
+    
 
 </form>
 
@@ -44,7 +51,19 @@
 
         @foreach (var item in Model)
         {
-           
+            <script type="text/javascript">
+                    var add = (function () {
+                    var counter = 0;
+                    return function () {return counter += 1;}
+                })();
+
+                function myFunction() {
+                   // for (i = 0; i < item.length; i++){
+                        document.getElementById( "displayCount").innerHTML = add();
+                    }
+              //  }
+      
+            </script>
             <tr style="background-color: lightgrey";>
 
                 <td>
@@ -60,10 +79,11 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    <button type="button" onclick="clickCounter()" class="btn btn-success btn-sm">
+                    <button type="button"  class="btn btn-success btn-sm" onclick="myFunction()">
                         <span class="glyphicon glyphicon-thumbs-up"></span> Like
                      </button>
-                  
+                    <span id="displayCount"></span>
+                   
                 </td>
                 <td class="btn btn-default btn-sm">
                     @Html.ActionLink(" ", "Playlist", new { id = item.AlbumID }, new { @class = " glyphicon glyphicon-list" })
